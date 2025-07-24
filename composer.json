@@ -20,7 +20,7 @@
     "php": "^7.4 || ^8.0",
     "doctrine/migrations": "^2.3.2",
     "composer/package-versions-deprecated": "^1",
-    "o3-shop/shop-facts": "dev-b-1.0",
+    "o3-shop/shop-facts": "^1.0.0",
     "symfony/console": "*"
   },
   "require-dev": {
