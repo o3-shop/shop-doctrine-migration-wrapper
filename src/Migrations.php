@@ -108,13 +108,6 @@ class Migrations
             }
         }
 
-        exec(__DIR__ . '/../../../bin/oe-eshop-db_views_generate', $output, $returnCode);
-        
-        if ($returnCode !== 0) {
-            echo('<error>Failed to regenerate database views.</error> \ln');
-            return $returnCode;
-        }
-        printf("Database views generated successfully.\n");
 
         return 0;
     }
