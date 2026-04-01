@@ -82,8 +82,6 @@ final class MigrationsTest extends TestCase
         $ceMigrationsPath = 'path_to_ce_migrations';
 
         $input = new ArrayInput([
-            '--configuration' => $ceMigrationsPath,
-            '--db-configuration' => $dbConfigFilePath,
             '-n' => true,
             'command' => $command
         ]);
@@ -124,22 +122,16 @@ final class MigrationsTest extends TestCase
         ];
 
         $inputCE = new ArrayInput([
-            '--configuration' => $ceMigrationsPath,
-            '--db-configuration' => $dbConfigFilePath,
             '-n' => true,
             'command' => $command
         ]);
 
         $inputPE = new ArrayInput([
-            '--configuration' => $peMigrationsPath,
-            '--db-configuration' => $dbConfigFilePath,
             '-n' => true,
             'command' => $command
         ]);
 
         $inputEE = new ArrayInput([
-            '--configuration' => $eeMigrationsPath,
-            '--db-configuration' => $dbConfigFilePath,
             '-n' => true,
             'command' => $command
         ]);
@@ -179,8 +171,6 @@ final class MigrationsTest extends TestCase
         ];
 
         $inputEE = new ArrayInput([
-            '--configuration' => $eeMigrationsPath,
-            '--db-configuration' => $dbConfigFilePath,
             '-n' => true,
             'command' => $command
         ]);
