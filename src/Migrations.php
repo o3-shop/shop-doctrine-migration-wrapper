@@ -108,13 +108,27 @@ class Migrations
             }
         }
 
-        exec(__DIR__ . '/../../../bin/oe-eshop-db_views_generate', $output, $returnCode);
-        
-        if ($returnCode !== 0) {
-            echo('<error>Failed to regenerate database views.</error> \ln');
-            return $returnCode;
+        $dbConfig = include $this->dbFilePath;
+        try {
+            $dsn = sprintf('%s:host=%s;port=%s;dbname=%s', $dbConfig['driver'], $dbConfig['host'], $dbConfig['port'], $dbConfig['dbname']);
+            $pdo = new \PDO($dsn, $dbConfig['user'], $dbConfig['password'], $dbConfig['driverOptions'] ?? []);
+            $stmt = $pdo->query("SELECT COUNT(*) FROM `oxconfig` LIMIT 1");
+            $oxconfigReady = $stmt && $stmt->fetchColumn() > 0;
+        } catch (\Exception $e) {
+            $oxconfigReady = false;
         }
-        printf("Database views generated successfully.\n");
+
+        if (!$oxconfigReady) {
+            return 0;
+        } else {
+            exec(__DIR__ . '/../../../bin/oe-eshop-db_views_generate', $output, $returnCode);
+
+            if ($returnCode !== 0) {
+                echo('<error>Failed to regenerate database views.</error> \ln');
+                return $returnCode;
+            }
+            printf("Database views generated successfully.\n");
+        }
 
         return 0;
     }
