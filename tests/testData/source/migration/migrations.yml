@@ -1,4 +1,5 @@
 name: Oxid Migrations CE
-migrations_namespace: OxidEsales\DoctrineMigrationWrapper\source\Migrations
-table_name: oxmigrations_ce
-migrations_directory: data
+migrations_paths:
+  'OxidEsales\DoctrineMigrationWrapper\source\Migrations': data
+table_storage:
+  table_name: oxmigrations_ce

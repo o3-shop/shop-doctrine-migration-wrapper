@@ -1,4 +1,5 @@
 name: Oxid Migrations (Project)
-migrations_namespace: OxidEsales\DoctrineMigrationWrapper\source\Migrations
-table_name: oxmigrations_project
-migrations_directory: project_data
+migrations_paths:
+  'OxidEsales\DoctrineMigrationWrapper\source\Migrations': project_data
+table_storage:
+  table_name: oxmigrations_project
