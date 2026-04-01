@@ -96,9 +96,9 @@ class Migrations
         $migrationPaths = $this->migrationsPathProvider->getMigrationsPath($edition);
 
         foreach ($migrationPaths as $migrationEdition => $migrationPath) {
-            $doctrineApplication = $this->doctrineApplicationBuilder->build();
+            $doctrineApplication = $this->doctrineApplicationBuilder->build($this->dbFilePath, $migrationPath);
 
-            $input = $this->formDoctrineInput($command, $migrationPath, $this->dbFilePath);
+            $input = $this->formDoctrineInput($command);
 
             if ($this->shouldRunCommand($command, $migrationPath)) {
                 $errorCode = $doctrineApplication->run($input, $this->output);
@@ -142,11 +142,9 @@ class Migrations
      *
      * @return ArrayInput
      */
-    private function formDoctrineInput($command, $migrationPath, $dbFilePath): ArrayInput
+    private function formDoctrineInput($command): ArrayInput
     {
         return new ArrayInput([
-            '--configuration' => $migrationPath,
-            '--db-configuration' => $dbFilePath,
             '-n' => true,
             'command' => !empty($command) ? $command : self::STATUS_COMMAND,
         ]);
