@@ -18,7 +18,8 @@
   ],
   "require": {
     "php": "^7.4 || ^8.0",
-    "doctrine/migrations": "^2.3.2",
+    "doctrine/dbal": "^3.9",
+    "doctrine/migrations": "^3.0",
     "composer/package-versions-deprecated": "^1",
     "o3-shop/shop-facts": "^1.0.0",
     "symfony/console": "*"
