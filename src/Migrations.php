@@ -119,7 +119,6 @@ class Migrations
         }
 
         if (!$oxconfigReady) {
-            printf("Skipping database views generation: oxconfig table is empty or not accessible.\n");
             return 0;
         } else {
             exec(__DIR__ . '/../../../bin/oe-eshop-db_views_generate', $output, $returnCode);
