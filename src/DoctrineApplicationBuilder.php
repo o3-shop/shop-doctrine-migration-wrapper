@@ -55,7 +55,7 @@ class DoctrineApplicationBuilder
             new ExistingConnection($conn)
         );
 
-        $doctrineApplication = ConsoleRunner::createApplication($dependencyFactory);
+        $doctrineApplication = ConsoleRunner::createApplication([], $dependencyFactory);
         $doctrineApplication->setAutoExit(false);
         $doctrineApplication->setCatchExceptions(false);
 
