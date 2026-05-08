@@ -49,5 +49,8 @@
   ],
   "replace": {
     "oxid-esales/oxideshop-doctrine-migration-wrapper": "3.3.0"
+  },
+  "archive": {
+    "exclude": [".next-bump"]
   }
 }
